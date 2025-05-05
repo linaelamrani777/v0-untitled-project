@@ -1,10 +1,21 @@
 import type React from "react"
-import { AppSidebar } from "@/components/app-sidebar"
+import { Toaster } from "@/components/ui/toaster"
+import { AuthProvider } from "@/lib/auth/auth-context"
+import "./globals.css"
 
-export default function TableauDeBordLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <AppSidebar>{children}</AppSidebar>
+  return (
+    <html lang="fr">
+      <body>
+        <AuthProvider>
+          {children}
+          <Toaster />
+        </AuthProvider>
+      </body>
+    </html>
+  )
 }

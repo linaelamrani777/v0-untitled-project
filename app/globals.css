@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    /* Theme Colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -26,7 +25,6 @@
     --ring: 250 95% 60%;
     --radius: 0.5rem;
 
-    /* Sidebar */
     --sidebar-background: 250 30% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -67,11 +65,12 @@
     --sidebar-border: 240 10% 15%;
     --sidebar-ring: 250 95% 60%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }

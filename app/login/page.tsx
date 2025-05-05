@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [successMessage, setSuccessMessage] = useState("")
-  const { login, user } = useAuth()
+  const { login, user, isLoading: authLoading } = useAuth()
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -32,10 +32,10 @@ export default function LoginPage() {
 
   // Rediriger si déjà connecté
   useEffect(() => {
-    if (user) {
+    if (user && !authLoading) {
       router.push("/dashboard")
     }
-  }, [user, router])
+  }, [user, authLoading, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -51,19 +51,31 @@ export default function LoginPage() {
         return
       }
 
-      const success = await login(email, password)
+      const result = await login(email, password)
 
-      if (success) {
+      if (result.success) {
         router.push("/dashboard")
       } else {
-        setError("Une erreur est survenue lors de la connexion. Veuillez réessayer.")
+        setError(result.message || "Une erreur est survenue lors de la connexion. Veuillez réessayer.")
       }
-    } catch (err) {
-      setError("Une erreur est survenue. Veuillez réessayer.")
+    } catch (err: any) {
+      setError(err?.message || "Une erreur est survenue. Veuillez réessayer.")
       console.error(err)
     } finally {
       setIsLoading(false)
     }
+  }
+
+  // Afficher un écran de chargement pendant la vérification de l'authentification
+  if (authLoading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-4">
+        <div className="text-center">
+          <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+          <p>Chargement...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -101,7 +113,7 @@ export default function LoginPage() {
               </Alert>
             )}
             {successMessage && (
-              <Alert className="bg-green-50 text-green-800 border-green-200">
+              <Alert className="border-green-200 bg-green-50 text-green-800">
                 <AlertDescription>{successMessage}</AlertDescription>
               </Alert>
             )}
@@ -132,7 +144,14 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <Button className="w-full bg-primary" type="submit" disabled={isLoading}>
-              {isLoading ? "Connexion en cours..." : "Se connecter"}
+              {isLoading ? (
+                <>
+                  <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+                  Connexion en cours...
+                </>
+              ) : (
+                "Se connecter"
+              )}
             </Button>
             <div className="text-center text-sm">
               Vous n'avez pas de compte?{" "}
