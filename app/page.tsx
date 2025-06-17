@@ -42,7 +42,7 @@ export default function Home() {
             <div className="grid gap-12 md:grid-cols-2 md:gap-8">
               <div className="flex flex-col justify-center space-y-4">
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  Plateforme Éducative pour Étudiants
+                  Plteforme Éducative pour Étudiants
                 </h1>
                 <p className="text-lg text-gray-600">
                   Guides d'étude personnalisés, chatbot IA et intégration de bibliothèque pour améliorer votre
