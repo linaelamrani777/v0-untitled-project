@@ -153,160 +153,161 @@ export default function MaterialDetailPage() {
                   <TabsTrigger value="notes">Notes</TabsTrigger>
                   <TabsTrigger value="details">Details</TabsTrigger>
                 </TabsList>
-              </Tabs>
-            </CardHeader>
-            <CardContent>
-              <TabsContent value="preview" className="mt-0">
-                <div className="aspect-[3/4] bg-gray-100 rounded-md flex items-center justify-center mb-4">
-                  <div className="text-center p-6">
-                    <FileText className="h-16 w-16 mx-auto text-primary/50 mb-4" />
-                    <h3 className="text-lg font-medium">PDF Preview</h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Preview is available for the first 5 pages of this document
-                    </p>
-                    <div className="bg-white rounded-md border p-6 max-w-md mx-auto text-left">
-                      <h2 className="text-xl font-bold text-center mb-4">Integration Techniques</h2>
-                      <p className="mb-2">This chapter covers the following integration techniques:</p>
-                      <ul className="list-disc pl-6 mb-4 space-y-1">
-                        <li>Substitution Method</li>
-                        <li>Integration by Parts</li>
-                        <li>Partial Fractions</li>
-                        <li>Trigonometric Substitution</li>
-                      </ul>
-                      <p>
-                        Each technique will be explained with examples and practice problems to help you master these
-                        important calculus concepts.
+
+
+                <TabsContent value="preview" className="mt-0">
+                  <div className="aspect-[3/4] bg-gray-100 rounded-md flex items-center justify-center mb-4">
+                    <div className="text-center p-6">
+                      <FileText className="h-16 w-16 mx-auto text-primary/50 mb-4" />
+                      <h3 className="text-lg font-medium">PDF Preview</h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Preview is available for the first 5 pages of this document
                       </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm">
-                      <ChevronUp className="mr-2 h-4 w-4" />
-                      Previous Page
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      Next Page
-                      <ChevronDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
-                  <div className="text-sm text-muted-foreground">Page 1 of {material.pages}</div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="notes" className="mt-0 space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-medium">Your Notes</h3>
-                  <Button size="sm" onClick={() => setShowNoteForm(!showNoteForm)}>
-                    <Plus className="mr-2 h-4 w-4" />
-                    Add Note
-                  </Button>
-                </div>
-
-                {showNoteForm && (
-                  <Card>
-                    <CardContent className="p-4 space-y-4">
-                      <div className="space-y-2">
-                        <Textarea placeholder="Write your note here..." className="min-h-[100px]" />
+                      <div className="bg-white rounded-md border p-6 max-w-md mx-auto text-left">
+                        <h2 className="text-xl font-bold text-center mb-4">Integration Techniques</h2>
+                        <p className="mb-2">This chapter covers the following integration techniques:</p>
+                        <ul className="list-disc pl-6 mb-4 space-y-1">
+                          <li>Substitution Method</li>
+                          <li>Integration by Parts</li>
+                          <li>Partial Fractions</li>
+                          <li>Trigonometric Substitution</li>
+                        </ul>
+                        <p>
+                          Each technique will be explained with examples and practice problems to help you master these
+                          important calculus concepts.
+                        </p>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Input type="number" placeholder="Page number" className="w-32" />
-                        <Button className="gradient-primary">
-                          <Save className="mr-2 h-4 w-4" />
-                          Save Note
-                        </Button>
-                        <Button variant="outline" onClick={() => setShowNoteForm(false)}>
-                          Cancel
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {notes.map((note) => (
-                  <Card key={note.id} className="hover-scale">
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start">
-                        <div className="flex-1">
-                          <p className="text-sm">{note.content}</p>
-                          <div className="flex items-center mt-2 text-xs text-muted-foreground">
-                            <Clock className="h-3 w-3 mr-1" />
-                            {note.timestamp}
-                            <Badge variant="outline" className="ml-2">
-                              Page {note.page}
-                            </Badge>
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </TabsContent>
-
-              <TabsContent value="details" className="mt-0 space-y-4">
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-medium">Description</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{material.description}</p>
-                  </div>
-
-                  <Separator />
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <h4 className="text-sm font-medium">File Type</h4>
-                      <p className="text-sm text-muted-foreground">{material.type}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium">Size</h4>
-                      <p className="text-sm text-muted-foreground">{material.size}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium">Pages</h4>
-                      <p className="text-sm text-muted-foreground">{material.pages}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium">Author</h4>
-                      <p className="text-sm text-muted-foreground">{material.author}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium">Upload Date</h4>
-                      <p className="text-sm text-muted-foreground">{material.date}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium">Subject</h4>
-                      <p className="text-sm text-muted-foreground">{material.subject}</p>
                     </div>
                   </div>
-
-                  <Separator />
-
-                  <div>
-                    <h3 className="text-lg font-medium">Tags</h3>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {material.tags.map((tag) => (
-                        <Badge key={tag} className="bg-primary/10 text-primary border-primary/20">
-                          {tag}
-                        </Badge>
-                      ))}
-                      <Button variant="ghost" size="sm" className="text-primary">
-                        <Plus className="mr-1 h-3 w-3" />
-                        Add Tag
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <Button variant="outline" size="sm">
+                        <ChevronUp className="mr-2 h-4 w-4" />
+                        Previous Page
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        Next Page
+                        <ChevronDown className="ml-2 h-4 w-4" />
                       </Button>
                     </div>
+                    <div className="text-sm text-muted-foreground">Page 1 of {material.pages}</div>
                   </div>
-                </div>
-              </TabsContent>
-            </CardContent>
+                </TabsContent>
+
+                <TabsContent value="notes" className="mt-0 space-y-4">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-medium">Your Notes</h3>
+                    <Button size="sm" onClick={() => setShowNoteForm(!showNoteForm)}>
+                      <Plus className="mr-2 h-4 w-4" />
+                      Add Note
+                    </Button>
+                  </div>
+
+                  {showNoteForm && (
+                      <Card>
+                        <CardContent className="p-4 space-y-4">
+                          <div className="space-y-2">
+                            <Textarea placeholder="Write your note here..." className="min-h-[100px]" />
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Input type="number" placeholder="Page number" className="w-32" />
+                            <Button className="gradient-primary">
+                              <Save className="mr-2 h-4 w-4" />
+                              Save Note
+                            </Button>
+                            <Button variant="outline" onClick={() => setShowNoteForm(false)}>
+                              Cancel
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                  )}
+
+                  {notes.map((note) => (
+                      <Card key={note.id} className="hover-scale">
+                        <CardContent className="p-4">
+                          <div className="flex justify-between items-start">
+                            <div className="flex-1">
+                              <p className="text-sm">{note.content}</p>
+                              <div className="flex items-center mt-2 text-xs text-muted-foreground">
+                                <Clock className="h-3 w-3 mr-1" />
+                                {note.timestamp}
+                                <Badge variant="outline" className="ml-2">
+                                  Page {note.page}
+                                </Badge>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <Button variant="ghost" size="icon" className="h-8 w-8">
+                                <Pencil className="h-4 w-4" />
+                              </Button>
+                              <Button variant="ghost" size="icon" className="h-8 w-8">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                  ))}
+                </TabsContent>
+
+                <TabsContent value="details" className="mt-0 space-y-4">
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-lg font-medium">Description</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{material.description}</p>
+                    </div>
+
+                    <Separator />
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <h4 className="text-sm font-medium">File Type</h4>
+                        <p className="text-sm text-muted-foreground">{material.type}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Size</h4>
+                        <p className="text-sm text-muted-foreground">{material.size}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Pages</h4>
+                        <p className="text-sm text-muted-foreground">{material.pages}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Author</h4>
+                        <p className="text-sm text-muted-foreground">{material.author}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Upload Date</h4>
+                        <p className="text-sm text-muted-foreground">{material.date}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium">Subject</h4>
+                        <p className="text-sm text-muted-foreground">{material.subject}</p>
+                      </div>
+                    </div>
+
+                    <Separator />
+
+                    <div>
+                      <h3 className="text-lg font-medium">Tags</h3>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {material.tags.map((tag) => (
+                            <Badge key={tag} className="bg-primary/10 text-primary border-primary/20">
+                              {tag}
+                            </Badge>
+                        ))}
+                        <Button variant="ghost" size="sm" className="text-primary">
+                          <Plus className="mr-1 h-3 w-3" />
+                          Add Tag
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </CardHeader>
+
           </Card>
 
           <Card>
