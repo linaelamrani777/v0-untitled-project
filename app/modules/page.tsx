@@ -11,7 +11,7 @@ export default function ModulesPage() {
     {
       id: "analyse4",
       title: "Analyse 4",
-      description: "Étude des fonctions complexes et équations différentielles",
+      description: " l’étude des séries et transformées de Fourier ainsi que des fonctions complexes, pour analyser et résoudre des problèmes liés aux signaux et équations différentielles.",
     },
     {
       id: "anglais3",
@@ -21,22 +21,22 @@ export default function ModulesPage() {
     {
       id: "droit-environnement",
       title: "Droit Environnement",
-      description: "Législation et réglementation environnementale",
+      description: "Droit de l’environnement est l’étude des règles juridiques visant à protéger la nature, encadrer les activités humaines et préserver les ressources naturelles pour les générations futures.",
     },
     {
       id: "electronique-analogique",
       title: "Electronique Analogique",
-      description: "Conception et analyse de circuits analogiques",
+      description: "L’électronique analogique concerne les circuits qui utilisent des signaux électriques continus pour transmettre et traiter des informations avec des valeurs variables.",
     },
     {
       id: "electronique-numerique",
       title: "Electronique Numérique",
-      description: "Systèmes numériques et conception logique",
+      description: "L’électronique numérique étudie et conçoit des circuits qui traitent des signaux à deux niveaux (0 et 1) pour manipuler et stocker des informations binaires.",
     },
     {
       id: "espagnol",
       title: "Espagnol",
-      description: "Compétences linguistiques et culturelles en espagnol",
+      description: "Espagnol  est l’apprentissage des bases pour communiquer à l’oral et à l’écrit dans des situations simples de la vie quotidienne.",
     },
     {
       id: "probabilites-statistique",
@@ -46,12 +46,12 @@ export default function ModulesPage() {
     {
       id: "structure-donnees-c",
       title: "Structure des Données en C",
-      description: "Implémentation et optimisation des structures de données",
+      description: "Structures en C est l’apprentissage de la définition et l’utilisation de types de données personnalisés pour organiser et manipuler des informations complexes en langage C",
     },
     {
       id: "systeme-exploitation",
       title: "Système d'Exploitation",
-      description: "Architecture et fonctionnement des systèmes d'exploitation",
+      description: "Systèmes d’exploitation (Linux) est une introduction au rôle et au fonctionnement d’un système comme Linux, utilisé pour contrôler, organiser et exécuter les opérations d’un ordinateur.",
     },
   ]
 
