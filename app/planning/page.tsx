@@ -11,8 +11,8 @@ export default function PlanningPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Planning des cours</h1>
-          <p className="text-muted-foreground">Consultez votre emploi du temps hebdomadaire</p>
+          <h1 className="text-3xl font-bold tracking-tight">Planning des examens</h1>
+          <p className="text-muted-foreground">Consultez votre emploi </p>
         </div>
         <Button asChild>
           <Link href="/dashboard">Retour au tableau de bord</Link>
@@ -23,13 +23,13 @@ export default function PlanningPage() {
       <Card>
         <CardHeader>
           <CardTitle>Emploi du temps</CardTitle>
-          <CardDescription>Votre planning de la semaine</CardDescription>
+          <CardDescription>Votre planning de la semaine des examens</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex justify-center">
             <Image
               src="/planning.jpg"
-              alt="Planning des cours"
+              alt="Planning des examens"
               width={800}
               height={600}
               className="rounded-lg border shadow-sm max-w-full h-auto"
@@ -47,30 +47,30 @@ export default function PlanningPage() {
             <CardDescription>Pr. Mezgouri Zakaria</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">Lundi 8h00 - 10h00</p>
-            <p className="text-sm text-muted-foreground">Amphithéâtre A</p>
+            <p className="text-sm text-muted-foreground">Lundi 9h00 - 11h00</p>
+            <p className="text-sm text-muted-foreground">0.5, 1.1, 1.4,1.5, AMPHI </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Analyse 4</CardTitle>
-            <CardDescription>Dr. Marie Dubois</CardDescription>
+            <CardDescription>Pr. JERROUDI AMINE</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">Mardi 10h00 - 12h00</p>
-            <p className="text-sm text-muted-foreground">Salle 201</p>
+            <p className="text-sm text-muted-foreground">Jeudi 14H30-16H30 0</p>
+            <p className="text-sm text-muted-foreground">0.5, 1.1, 1.4,1.5, AMPHI</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Système d'exploitation</CardTitle>
-            <CardDescription>Prof. Jean Laurent</CardDescription>
+            <CardDescription>Pr. CHETIOUI Kaouthar</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">Mercredi 14h00 - 16h00</p>
-            <p className="text-sm text-muted-foreground">Lab Informatique</p>
+            <p className="text-sm text-muted-foreground">Mardi 16H45-18H45</p>
+            <p className="text-sm text-muted-foreground">0.5, 1.1, 1.4,1.5, AMPHI</p>
           </CardContent>
         </Card>
       </div>
@@ -87,7 +87,6 @@ export default function PlanningPage() {
           <Button variant="outline" asChild>
             <Link href="/dashboard">Tableau de bord</Link>
           </Button>
-          <Button variant="outline">Télécharger le planning</Button>
         </CardContent>
       </Card>
     </div>
