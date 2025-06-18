@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Slider } from "@/components/ui/slider"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useToast } from "@/components/ui/use-toast"
 
 export type StudyPreferences = {
   subjects: string[]
@@ -21,6 +22,7 @@ interface StudyQuestionnaireProps {
 }
 
 export default function StudyQuestionnaire({ onComplete, isLoading = false }: StudyQuestionnaireProps) {
+  const { toast } = useToast()
   const [step, setStep] = useState(1)
   const [preferences, setPreferences] = useState<StudyPreferences>({
     subjects: [],
@@ -29,7 +31,7 @@ export default function StudyQuestionnaire({ onComplete, isLoading = false }: St
     studyStyle: "visual",
   })
 
-  // Liste des modules disponibles
+  // Liste des modules spécifiques demandés par l'utilisateur
   const availableSubjects = [
     "Système d'exploitation",
     "Structure des données en C",
@@ -54,6 +56,10 @@ export default function StudyQuestionnaire({ onComplete, isLoading = false }: St
 
   const handleComplete = () => {
     onComplete(preferences)
+    toast({
+      title: "Questionnaire complété",
+      description: "Vos préférences d'étude ont été enregistrées avec succès.",
+    })
   }
 
   const handleSubjectChange = (subject: string, checked: boolean) => {
@@ -84,6 +90,13 @@ export default function StudyQuestionnaire({ onComplete, isLoading = false }: St
     }))
   }
 
+  // Vérifiez si ce fichier contient des modules avec des professeurs
+  // Si oui, il faudra les modifier aussi
+  const subjectsWithProfessors = availableSubjects.map((subject) => ({
+    name: subject,
+    professor: "John Doe", // Exemple de professeur, à remplacer par la logique réelle
+  }))
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -97,19 +110,19 @@ export default function StudyQuestionnaire({ onComplete, isLoading = false }: St
           <div className="space-y-4">
             <div>
               <h3 className="mb-4 text-lg font-medium">Quels modules souhaitez-vous étudier ?</h3>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-                {availableSubjects.map((subject) => (
-                  <div key={subject} className="flex items-center space-x-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {subjectsWithProfessors.map((subjectWithProfessor) => (
+                  <div key={subjectWithProfessor.name} className="flex items-center space-x-2">
                     <Checkbox
-                      id={`subject-${subject}`}
-                      checked={preferences.subjects.includes(subject)}
-                      onCheckedChange={(checked) => handleSubjectChange(subject, checked === true)}
+                      id={`subject-${subjectWithProfessor.name}`}
+                      checked={preferences.subjects.includes(subjectWithProfessor.name)}
+                      onCheckedChange={(checked) => handleSubjectChange(subjectWithProfessor.name, checked === true)}
                     />
                     <label
-                      htmlFor={`subject-${subject}`}
+                      htmlFor={`subject-${subjectWithProfessor.name}`}
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      {subject}
+                      {subjectWithProfessor.name} - Professeur: {subjectWithProfessor.professor}
                     </label>
                   </div>
                 ))}
