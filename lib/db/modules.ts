@@ -5,7 +5,7 @@ export const modules = [
     title: "Algèbre 4",
     description: "Approfondissement des concepts algébriques avancés",
     professor: "Pr. MAZGOURI ZAKARIA",
-    credits: 4,
+    credits: 1,
   },
   {
     id: "analyse4",
