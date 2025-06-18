@@ -9,7 +9,7 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     algebre4: {
       title: "Algèbre 4",
       description: "Approfondissement des concepts algébriques avancés",
-      professor: "Dr. Martin Dubois",
+      professor: "Pr. MAZGOURI ZAKARIA",
       credits: 4,
       chapters: [
         "Espaces vectoriels avancés",

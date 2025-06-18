@@ -31,21 +31,17 @@ export default function StudyQuestionnaire({ onComplete, isLoading = false }: St
 
   // Liste des modules disponibles
   const availableSubjects = [
-    "Mathématiques",
-    "Physique",
-    "Chimie",
-    "Biologie",
-    "Informatique",
-    "Histoire",
-    "Géographie",
-    "Philosophie",
-    "Économie",
-    "Droit",
-    "Psychologie",
-    "Sociologie",
-    "Littérature",
-    "Langues",
-    "Sciences politiques",
+    "Système d'exploitation",
+    "Structure des données en C",
+    "Probabilités et Statistiques",
+    "Espagnol",
+    "Électronique numérique",
+    "Électronique analogique",
+    "EEDD",
+    "Droit de l'environnement",
+    "Anglais 3",
+    "Analyse 4",
+    "Algèbre 4",
   ]
 
   const handleNextStep = () => {
