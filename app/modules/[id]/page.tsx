@@ -20,8 +20,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     analyse4: {
       title: "Analyse 4",
       description: "Étude des fonctions complexes et équations différentielles",
-      professor: "Dr. Sophie Laurent",
-      credits: 4,
+      professor: "Pr. JERROUDI AMINE",
+      credits: 1,
       chapters: [
         "Fonctions holomorphes",
         "Intégrales de contour",
@@ -34,8 +34,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     anglais3: {
       title: "Anglais 3",
       description: "Communication professionnelle et technique en anglais",
-      professor: "Prof. Emily Johnson",
-      credits: 2,
+      professor: "Pr. DAHBI MANAR",
+      credits: 1,
       chapters: [
         "Rédaction technique",
         "Présentation orale",
@@ -48,8 +48,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     "droit-environnement": {
       title: "Droit Environnement",
       description: "Législation et réglementation environnementale",
-      professor: "Me. Claire Moreau",
-      credits: 3,
+      professor: "Pr. LAHRECH Khadija",
+      credits: 1,
       chapters: [
         "Principes fondamentaux du droit de l'environnement",
         "Réglementation des installations classées",
@@ -62,8 +62,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     "electronique-analogique": {
       title: "Electronique Analogique",
       description: "Conception et analyse de circuits analogiques",
-      professor: "Prof. Thomas Leroy",
-      credits: 4,
+      professor: "Pr. MAZER Said",
+      credits: 1,
       chapters: [
         "Amplificateurs opérationnels",
         "Filtres analogiques",
@@ -76,8 +76,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     "electronique-numerique": {
       title: "Electronique Numérique",
       description: "Systèmes numériques et conception logique",
-      professor: "Dr. Philippe Blanc",
-      credits: 4,
+      professor: "Pr. MRABTI Mostafa",
+      credits: 1,
       chapters: [
         "Systèmes combinatoires",
         "Systèmes séquentiels",
@@ -90,8 +90,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     espagnol: {
       title: "Espagnol",
       description: "Compétences linguistiques et culturelles en espagnol",
-      professor: "Prof. Maria Rodriguez",
-      credits: 2,
+      professor: "Pr. KHALID NEJJARI",
+      credits: 1,
       chapters: [
         "Grammaire avancée",
         "Conversation professionnelle",
@@ -104,8 +104,8 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     "probabilites-statistique": {
       title: "Probabilités et Statistique",
       description: "Analyse de données et modèles probabilistes",
-      professor: "Dr. Julien Mercier",
-      credits: 4,
+      professor: "Pr. OUGHDIR LAHCEN",
+      credits: 1,
       chapters: [
         "Probabilités conditionnelles",
         "Variables aléatoires",
@@ -118,16 +118,16 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
     "structure-donnees-c": {
       title: "Structure des Données en C",
       description: "Implémentation et optimisation des structures de données",
-      professor: "Prof. Nicolas Petit",
-      credits: 4,
+      professor: "Pr. HRAOUI Said",
+      credits: 1,
       chapters: ["Tableaux et listes chaînées", "Piles et files", "Arbres binaires", "Tables de hachage", "Graphes"],
       resources: ["Polycopié du cours", "Travaux pratiques", "Projets"],
     },
     "systeme-exploitation": {
       title: "Système d'Exploitation",
       description: "Architecture et fonctionnement des systèmes d'exploitation",
-      professor: "Dr. Antoine Durand",
-      credits: 4,
+      professor: "Pr. CHETIOUI Kaouthar",
+      credits: 1,
       chapters: ["Processus et threads", "Ordonnancement", "Gestion de la mémoire", "Systèmes de fichiers", "Sécurité"],
       resources: ["Polycopié du cours", "Travaux pratiques", "Projets"],
     },
