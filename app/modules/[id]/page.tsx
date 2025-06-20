@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 
 export default function ModuleDetailPage({ params }: { params: { id: string } }) {
+  // Simuler une base de données de modules
   const modules = {
     algebre4: {
       title: "Algèbre 4",
@@ -148,6 +149,7 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{module.title}</h1>
@@ -158,6 +160,7 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         </Button>
       </div>
 
+      {/* Infos et contenu */}
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>
@@ -227,6 +230,7 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         </Card>
       </div>
 
+      {/* Actions rapides */}
       <Card>
         <CardHeader>
           <CardTitle>Commencer à étudier</CardTitle>
@@ -235,22 +239,18 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <Button asChild className="w-full">
-              <a
-                href={`/pdf/${params.id}.pdf`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={`/cours/${params.id}`} target="_blank" rel="noopener noreferrer">
                 Accéder au cours
               </a>
             </Button>
-            <Button variant="outline" asChild className="w-full">
-              <a
-                href={`/pdf/${params.id}.pdf`}
-                download
-              >
-                Télécharger les ressources
-              </a>
-            </Button>
+
+            {module.resources.map((resource, index) => (
+              <Button key={index} variant="outline" asChild className="w-full">
+                <a href={`/pdf/${params.id}-${index + 1}.pdf`} download>
+                  Télécharger : {resource}
+                </a>
+              </Button>
+            ))}
           </div>
         </CardContent>
       </Card>
