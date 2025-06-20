@@ -1,52 +1,20 @@
-"use client"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
-import { FileText, Download, Eye, BookOpen, Video, FileImage } from "lucide-react"
-
-interface ModuleFile {
-  name: string
-  type: "pdf" | "doc" | "video" | "image"
-  url: string
-  size?: string
-}
 
 export default function ModuleDetailPage({ params }: { params: { id: string } }) {
-  const [selectedFile, setSelectedFile] = useState<ModuleFile | null>(null)
-
-  // Simuler une base de données de modules avec fichiers
   const modules = {
     algebre4: {
       title: "Algèbre 4",
       description: "Approfondissement des concepts algébriques avancés",
       professor: "Pr. MAZGOURI ZAKARIA",
       credits: 1,
-      chapters: ["Anneaux, morphismes et idéaux", "Anneaux : principaux, noethériens, euclidiens et factoriels"],
-      resources: [
-        "Polycopié du cours",
-        "Exercices",
-        " Examen Normal avec correction",
-        "Examen de Rattrapage avec correction",
+      chapters: [
+        "Anneaux, morphismes et idéaux",
+        "Anneaux : principaux, noethériens, euclidiens et factoriels",
       ],
-      files: [
-        { name: "Polycopié du cours", type: "pdf" as const, url: "/pdfs/algebre4/cours.pdf", size: "2.5 MB" },
-        { name: "Exercices", type: "pdf" as const, url: "/pdfs/algebre4/exercices.pdf", size: "1.8 MB" },
-        {
-          name: "Examen Normal avec correction",
-          type: "pdf" as const,
-          url: "/pdfs/algebre4/examen-normal.pdf",
-          size: "1.2 MB",
-        },
-        {
-          name: "Examen de Rattrapage avec correction",
-          type: "pdf" as const,
-          url: "/pdfs/algebre4/examen-rattrapage.pdf",
-          size: "1.1 MB",
-        },
-      ],
+      resources: ["Polycopié du cours", "Exercices", "Examen Normal avec correction", "Examen de Rattrapage avec correction"],
     },
     analyse4: {
       title: "Analyse 4",
@@ -61,11 +29,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Équations différentielles complexes",
       ],
       resources: ["Polycopié du cours", "Exercices corrigés", "Annales d'examens"],
-      files: [
-        { name: "Polycopié du cours", type: "pdf" as const, url: "/pdfs/analyse4/cours.pdf", size: "3.2 MB" },
-        { name: "Exercices corrigés", type: "pdf" as const, url: "/pdfs/analyse4/exercices.pdf", size: "2.1 MB" },
-        { name: "Annales d'examens", type: "pdf" as const, url: "/pdfs/analyse4/annales.pdf", size: "1.9 MB" },
-      ],
     },
     anglais3: {
       title: "Anglais 3",
@@ -80,11 +43,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Communication professionnelle",
       ],
       resources: ["Supports de cours", "Exercices d'écoute", "Articles scientifiques"],
-      files: [
-        { name: "Supports de cours", type: "pdf" as const, url: "/pdfs/anglais3/cours.pdf", size: "1.5 MB" },
-        { name: "Exercices d'écoute", type: "video" as const, url: "/videos/anglais3/listening.mp4", size: "45 MB" },
-        { name: "Articles scientifiques", type: "pdf" as const, url: "/pdfs/anglais3/articles.pdf", size: "2.8 MB" },
-      ],
     },
     "droit-environnement": {
       title: "Droit Environnement",
@@ -99,11 +57,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Responsabilité environnementale",
       ],
       resources: ["Code de l'environnement", "Études de cas", "Jurisprudence"],
-      files: [
-        { name: "Code de l'environnement", type: "pdf" as const, url: "/pdfs/droit/code.pdf", size: "4.2 MB" },
-        { name: "Études de cas", type: "pdf" as const, url: "/pdfs/droit/etudes-cas.pdf", size: "2.3 MB" },
-        { name: "Jurisprudence", type: "pdf" as const, url: "/pdfs/droit/jurisprudence.pdf", size: "3.1 MB" },
-      ],
     },
     "electronique-analogique": {
       title: "Electronique Analogique",
@@ -118,26 +71,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Circuits non-linéaires",
       ],
       resources: ["Polycopié du cours", "Travaux pratiques", "Simulations"],
-      files: [
-        {
-          name: "Polycopié du cours",
-          type: "pdf" as const,
-          url: "/pdfs/electronique-analogique/cours.pdf",
-          size: "3.5 MB",
-        },
-        {
-          name: "Travaux pratiques",
-          type: "pdf" as const,
-          url: "/pdfs/electronique-analogique/tp.pdf",
-          size: "2.7 MB",
-        },
-        {
-          name: "Simulations",
-          type: "pdf" as const,
-          url: "/pdfs/electronique-analogique/simulations.pdf",
-          size: "1.9 MB",
-        },
-      ],
     },
     "electronique-numerique": {
       title: "Electronique Numérique",
@@ -152,16 +85,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Conception de systèmes numériques",
       ],
       resources: ["Polycopié du cours", "Travaux pratiques", "Projets"],
-      files: [
-        {
-          name: "Polycopié du cours",
-          type: "pdf" as const,
-          url: "/pdfs/electronique-numerique/cours.pdf",
-          size: "2.9 MB",
-        },
-        { name: "Travaux pratiques", type: "pdf" as const, url: "/pdfs/electronique-numerique/tp.pdf", size: "2.1 MB" },
-        { name: "Projets", type: "pdf" as const, url: "/pdfs/electronique-numerique/projets.pdf", size: "1.8 MB" },
-      ],
     },
     espagnol: {
       title: "Espagnol",
@@ -176,11 +99,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Rédaction technique",
       ],
       resources: ["Manuel de cours", "Exercices d'écoute", "Articles"],
-      files: [
-        { name: "Manuel de cours", type: "pdf" as const, url: "/pdfs/espagnol/manuel.pdf", size: "2.2 MB" },
-        { name: "Exercices d'écoute", type: "video" as const, url: "/videos/espagnol/listening.mp4", size: "38 MB" },
-        { name: "Articles", type: "pdf" as const, url: "/pdfs/espagnol/articles.pdf", size: "1.6 MB" },
-      ],
     },
     "probabilites-statistique": {
       title: "Probabilités et Statistique",
@@ -195,11 +113,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         "Tests d'hypothèses",
       ],
       resources: ["Polycopié du cours", "Exercices corrigés", "Jeux de données"],
-      files: [
-        { name: "Polycopié du cours", type: "pdf" as const, url: "/pdfs/probabilites/cours.pdf", size: "3.1 MB" },
-        { name: "Exercices corrigés", type: "pdf" as const, url: "/pdfs/probabilites/exercices.pdf", size: "2.4 MB" },
-        { name: "Jeux de données", type: "pdf" as const, url: "/pdfs/probabilites/donnees.pdf", size: "1.3 MB" },
-      ],
     },
     "structure-donnees-c": {
       title: "Structure des Données en C",
@@ -208,11 +121,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
       credits: 1,
       chapters: ["Tableaux et listes chaînées", "Piles et files", "Arbres binaires", "Tables de hachage", "Graphes"],
       resources: ["Polycopié du cours", "Travaux pratiques", "Projets"],
-      files: [
-        { name: "Polycopié du cours", type: "pdf" as const, url: "/pdfs/structure-donnees/cours.pdf", size: "2.8 MB" },
-        { name: "Travaux pratiques", type: "pdf" as const, url: "/pdfs/structure-donnees/tp.pdf", size: "2.2 MB" },
-        { name: "Projets", type: "pdf" as const, url: "/pdfs/structure-donnees/projets.pdf", size: "1.7 MB" },
-      ],
     },
     "systeme-exploitation": {
       title: "Système d'Exploitation",
@@ -221,16 +129,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
       credits: 1,
       chapters: ["Processus et threads", "Ordonnancement", "Gestion de la mémoire", "Systèmes de fichiers", "Sécurité"],
       resources: ["Polycopié du cours", "Travaux pratiques", "Projets"],
-      files: [
-        {
-          name: "Polycopié du cours",
-          type: "pdf" as const,
-          url: "/pdfs/systeme-exploitation/cours.pdf",
-          size: "3.3 MB",
-        },
-        { name: "Travaux pratiques", type: "pdf" as const, url: "/pdfs/systeme-exploitation/tp.pdf", size: "2.6 MB" },
-        { name: "Projets", type: "pdf" as const, url: "/pdfs/systeme-exploitation/projets.pdf", size: "1.9 MB" },
-      ],
     },
   }
 
@@ -246,47 +144,6 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         </Button>
       </div>
     )
-  }
-
-  const getFileIcon = (type: string) => {
-    switch (type) {
-      case "pdf":
-        return <FileText className="h-4 w-4" />
-      case "video":
-        return <Video className="h-4 w-4" />
-      case "image":
-        return <FileImage className="h-4 w-4" />
-      default:
-        return <FileText className="h-4 w-4" />
-    }
-  }
-
-  const getFileColor = (type: string) => {
-    switch (type) {
-      case "pdf":
-        return "text-red-600"
-      case "video":
-        return "text-blue-600"
-      case "image":
-        return "text-green-600"
-      default:
-        return "text-gray-600"
-    }
-  }
-
-  const openFile = (file: ModuleFile) => {
-    // Ouvrir le fichier dans un nouvel onglet
-    window.open(file.url, "_blank")
-  }
-
-  const downloadFile = (file: ModuleFile) => {
-    // Créer un lien de téléchargement
-    const link = document.createElement("a")
-    link.href = file.url
-    link.download = file.name
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
   }
 
   return (
@@ -370,61 +227,31 @@ export default function ModuleDetailPage({ params }: { params: { id: string } })
         </Card>
       </div>
 
-      {/* Section améliorée pour accéder aux cours */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
-            Accéder aux ressources du cours
-          </CardTitle>
-          <CardDescription>Consultez et téléchargez les documents du cours</CardDescription>
+          <CardTitle>Commencer à étudier</CardTitle>
+          <CardDescription>Accédez aux ressources et commencez votre apprentissage</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="grid gap-4">
-            {module.files?.map((file, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <Button asChild className="w-full">
+              <a
+                href={`/pdf/${params.id}.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <div className="flex items-center gap-3">
-                  <div className={`${getFileColor(file.type)}`}>{getFileIcon(file.type)}</div>
-                  <div>
-                    <h4 className="font-medium">{file.name}</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {file.type.toUpperCase()} • {file.size}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => openFile(file)}
-                    className="flex items-center gap-1"
-                  >
-                    <Eye className="h-4 w-4" />
-                    Ouvrir
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => downloadFile(file)}
-                    className="flex items-center gap-1"
-                  >
-                    <Download className="h-4 w-4" />
-                    Télécharger
-                  </Button>
-                </div>
-              </div>
-            ))}
+                Accéder au cours
+              </a>
+            </Button>
+            <Button variant="outline" asChild className="w-full">
+              <a
+                href={`/pdf/${params.id}.pdf`}
+                download
+              >
+                Télécharger les ressources
+              </a>
+            </Button>
           </div>
-
-          {(!module.files || module.files.length === 0) && (
-            <div className="text-center py-8 text-muted-foreground">
-              <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>Aucun fichier disponible pour ce module</p>
-            </div>
-          )}
         </CardContent>
       </Card>
     </div>
